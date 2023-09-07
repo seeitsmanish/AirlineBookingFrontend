@@ -1,0 +1,109 @@
+.container{
+
+    margin: 50px;
+    width: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+}
+
+.Introduction_section{
+    display: flex;
+    justify-content: baseline;
+}
+
+.form_section{
+    height: auto;
+    width: auto;
+}
+
+.form_section_paper{
+    padding: 20px;
+}
+
+.forAlerts{
+    padding-top: 50px;
+    width: 70%;
+}
+.form_container{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form_item{
+    padding-bottom: 5px;
+}
+
+.form_submit_button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.grid_container{
+    display: grid;
+    grid-template-areas: 
+    "I1 I1 I1 I1"
+    "I2 I2 I2 I2"
+    "I3 I3 I4 I4"
+    "I5 I5 I6 I6"
+    "I7 I7 I8 I8"
+    "I9 I9 I9 I9"
+    ;
+    row-gap:30px;
+}
+
+.grid_container_form_dialogue{
+    display: grid;
+    grid-template-areas: 
+    "I1 I1 I1 I1"
+    "I2 I2 I3 I3"
+    "I4 I4 I5 I5"
+    "I6 I6 I7 I7"
+    "I8 I8 I9 I9"
+    "I10 I10 I11 I11"
+    ;
+    gap:40px;
+    padding: 20px;
+}
+
+.I1 {
+    grid-area: I1;
+}
+
+.I2 {
+    grid-area: I2;
+}
+
+.I3 {
+    grid-area: I3;
+}
+
+.I4 {
+    grid-area: I4;
+}
+
+.I5 {
+    grid-area: I5;
+}
+
+.I6 {
+    grid-area: I6;
+}
+
+.I7 {
+    grid-area: I7;
+}
+
+.I8 {
+    grid-area: I8;
+}
+
+.I9 {
+    grid-area: I9;
+}
+
