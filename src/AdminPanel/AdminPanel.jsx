@@ -1,10 +1,10 @@
-import LeftBarList from "./components/LeftBarList";
+import LeftBarList from "../components/LeftBarList";
 import "./AdminPanel.css";
-import CityView from "./components/CityView/CityView.jsx";
-import AirplaneView from "./components/AirplaneView/AirplaneView.jsx";
-import AirportView from "./components/AirportView/AirportView.jsx";
-import FlightView from "./components/FlightView/FlightView.jsx";
-import AdminPanelWelcomePage from "./components/AdminPanelWelcomePage";
+import CityView from "../components/CityView/CityView.jsx";
+import AirplaneView from "../components/AirplaneView/AirplaneView.jsx";
+import AirportView from "../components/AirportView/AirportView.jsx";
+import FlightView from "../components/FlightView/FlightView.jsx";
+import AdminPanelWelcomePage from "../components/AdminPanelWelcomePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import * as React from "react";
 
