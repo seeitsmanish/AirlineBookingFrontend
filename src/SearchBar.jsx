@@ -10,6 +10,7 @@ import dayjs from "dayjs";
 import Alert from "@mui/material/Alert";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import Paper from "@mui/material/Paper";
+import { Typography } from "@mui/material";
 
 const noOfTravellers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -102,15 +103,16 @@ export default function SearchBar() {
     <Paper
       elevation={3}
       style={{
-        margin: "100px 100px",
+        margin: "150px 150px",
         display: "flex",
         flexDirection: "column",
-        gap: "10px",
-        padding: "100px",
-        border: "5px solid #1A76D2",
+        gap: "30px",
+        padding: "50px",
+        border: "2px solid #1A76D2",
         borderRadius: "10px",
       }}
     >
+      {/* For alerts at the top of box */}
       {alerts && (
         <ClickAwayListener
           onClickAway={() => {
@@ -120,10 +122,13 @@ export default function SearchBar() {
           <Alert severity={alertSeverity}>{alertMessage}</Alert>
         </ClickAwayListener>
       )}
+
+      {/* This Div contains all the fields of search box */}
       <div
         className="fields"
         style={{
           display: "flex",
+          gap: "20px",
           justifyContent: "space-evenly",
         }}
       >
@@ -202,6 +207,7 @@ export default function SearchBar() {
           />
         </LocalizationProvider>
 
+        {/* No of Travellers */}
         <TextField
           id="travelers"
           label="Number of Travelers"
@@ -231,13 +237,14 @@ export default function SearchBar() {
         <center>
           <Button
             style={{
-              width: "50%",
-              height: "40px",
+              width: "30%",
+              height: "50px",
+              fontSize: "18px",
             }}
             variant="contained"
             onClick={searchForFlights}
           >
-            🔍 Search Flights
+            <Typography>🔍 Search Flights</Typography>
           </Button>
         </center>
       </div>
