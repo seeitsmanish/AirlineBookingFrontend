@@ -6,7 +6,7 @@ import Dialog from "@mui/material/Dialog";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-function Signup({ open, setOpen }) {
+function Signup({ open, setOpen, setAuthenticated }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,6 +25,7 @@ function Signup({ open, setOpen }) {
 
       const data = await res.json();
       localStorage.setItem("token", data.data.token);
+      setAuthenticated(true);
       handleClose();
     } catch (error) {
       console.log("Something went wrong during signUp", error);
@@ -97,7 +98,6 @@ function Signup({ open, setOpen }) {
               }}
               onClick={handleSignUp}
             >
-              {" "}
               Signup
             </Button>
           </Card>

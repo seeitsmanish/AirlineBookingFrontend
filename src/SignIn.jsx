@@ -3,16 +3,34 @@ import TextField from "@mui/material/TextField";
 import { Card, Typography } from "@mui/material";
 import { useState } from "react";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-function SignIn({ open, setOpen }) {
+function SignIn({ open, setOpen, setAuthenticated }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  async function handleSignIn() {
+    try {
+      const res = await fetch("http://localhost:3004/api/v1/signin", {
+        method: "POST",
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+      localStorage.setItem("token", data.data);
+      setAuthenticated(true);
+      handleClose();
+    } catch (error) {
+      console.log("Something went wrong during signUp", error);
+    }
+  }
 
   async function handleClose() {
     setOpen(false);
@@ -77,24 +95,7 @@ function SignIn({ open, setOpen }) {
               sx={{
                 width: "100%",
               }}
-              onClick={() => {
-                function callback2(data) {
-                  localStorage.setItem("token", data.data);
-                }
-                function callback1(res) {
-                  res.json().then(callback2);
-                }
-                fetch("http://localhost:3004/api/v1/signin", {
-                  method: "POST",
-                  body: JSON.stringify({
-                    email: email,
-                    password: password,
-                  }),
-                  headers: {
-                    "Content-type": "application/json",
-                  },
-                }).then(callback1);
-              }}
+              onClick={handleSignIn}
             >
               SignIn
             </Button>
