@@ -11,8 +11,9 @@ import Alert from "@mui/material/Alert";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
+import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 
-const noOfTravellers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const countOfTravellers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // Gives functionality of debounced update for a passed state
 const useDebounce = (value, delay = 500) => {
@@ -45,7 +46,7 @@ export default function SearchBar() {
   const [destinationCity, setDestinationCity] = useState(null);
   const [departureDate, setDepartureDate] = useState(null);
   const [returnDate, setReturnDate] = useState(null);
-  const [numberOfTravelers, setNumberOfTravelers] = useState(1);
+  const [numberOfTravellers, setNumberOfTravellers] = useState(1);
 
   // for Fetching cities for Autocomplete
   useEffect(() => {
@@ -135,7 +136,7 @@ export default function SearchBar() {
         {/* Departure  */}
         <Autocomplete
           style={{
-            width: "25%",
+            width: "20%",
           }}
           getOptionLabel={(option) => option.name}
           placeholder="Departure"
@@ -157,7 +158,7 @@ export default function SearchBar() {
 
         {/* Destionation  */}
         <Autocomplete
-          style={{ width: "25%" }}
+          style={{ width: "20%" }}
           getOptionLabel={(option) => option.name}
           placeholder="Destination"
           options={cities}
@@ -178,10 +179,10 @@ export default function SearchBar() {
         {/* Departure Date */}
         <LocalizationProvider
           dateAdapter={AdapterDayjs}
-          style={{ width: "25%" }}
+          style={{ width: "20%" }}
         >
           <DatePicker
-            style={{ width: "25%" }}
+            style={{ width: "20%" }}
             value={departureDate}
             onChange={(newValue) => {
               setDepartureDate(newValue);
@@ -194,10 +195,10 @@ export default function SearchBar() {
         {/* Return Date */}
         <LocalizationProvider
           dateAdapter={AdapterDayjs}
-          style={{ width: "25%" }}
+          style={{ width: "20%" }}
         >
           <DatePicker
-            style={{ width: "25%" }}
+            style={{ width: "20%" }}
             label="Return Date "
             value={returnDate}
             onChange={(newValue) => {
@@ -208,23 +209,24 @@ export default function SearchBar() {
         </LocalizationProvider>
 
         {/* No of Travellers */}
-        <TextField
-          id="travelers"
-          label="Number of Travelers"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          inputProps={{
-            min: 1,
-            max: 10,
-          }}
-          style={{
-            width: "20%",
-          }}
-          value={numberOfTravelers}
-          onChange={handleChange}
-        />
+        <FormControl style={{ width: "20%" }}>
+          <InputLabel id="number-select-label">No of Travllers</InputLabel>
+          <Select
+            labelId="number-select-label"
+            id="number-select"
+            value={numberOfTravellers}
+            onChange={(event) => {
+              setNumberOfTravellers(event.target.value);
+            }}
+            label="Select a Number"
+          >
+            {countOfTravellers.map((traveller) => (
+              <MenuItem key={traveller} value={traveller}>
+                {traveller}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </div>
 
       {/* Search Button */}
